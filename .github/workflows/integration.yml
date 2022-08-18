@@ -16,3 +16,15 @@ jobs:
       with:
         name: static-site
         path: .next/
+  release-project:
+    name: release project
+    runs-on: ubuntu-latest
+    needs: build-project
+    steps:
+    - name: download artifact
+      uses: actions/download-artifact@v3
+      with: 
+        name: static-site
+    - name: test artifact download
+      run: ls -R
+
